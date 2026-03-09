@@ -1,4 +1,3 @@
-
 let allIssues = [];
 let currentStatus = "all";
 
@@ -40,9 +39,14 @@ const showIssues = (issues) => {
         const div = document.createElement("div");
 
         const borderColor = issue.status === "open" ? "border-green-500" : "border-violet-500";
+
         const statusColor = issue.status === "open"
             ? "bg-green-100 text-green-700"
             : "bg-violet-100 text-violet-700";
+
+        const statusIcon = issue.status === "open"
+            ? "../assets/Open-Status.png"
+            : "../assets/Closed- Status .png";
 
         const priorityColor =
             issue.priority === "high" ? "bg-red-100 text-red-600" :
@@ -54,11 +58,25 @@ const showIssues = (issues) => {
                 class="bg-white rounded-xl shadow-sm p-4 border-t-4 ${borderColor} cursor-pointer hover:shadow-md transition">
 
                 <div class="flex justify-between items-center mb-3">
-                    <span class="text-xs px-2 py-1 rounded-full ${statusColor} capitalize">${issue.status}</span>
-                    <span class="text-xs px-2 py-1 rounded-full ${priorityColor} capitalize">${issue.priority}</span>
+
+                    <span class="text-xs px-2 py-1 rounded-full ${statusColor} capitalize flex items-center gap-1">
+
+                        <img src="${statusIcon}" class="w-3 h-3">
+
+                        ${issue.status}
+
+                    </span>
+
+                    <span class="text-xs px-2 py-1 rounded-full ${priorityColor} capitalize">
+
+                        ${issue.priority}
+
+                    </span>
+
                 </div>
 
                 <h2 class="font-semibold text-[15px] mb-2 line-clamp-2">${issue.title}</h2>
+
                 <p class="text-sm text-gray-500 mb-3 line-clamp-3">${issue.description}</p>
 
                 <div class="flex flex-wrap gap-2 mb-3">
@@ -71,6 +89,7 @@ const showIssues = (issues) => {
                     <p><span class="font-semibold">Author:</span> ${issue.author}</p>
                     <p><span class="font-semibold">Created:</span> ${new Date(issue.createdAt).toLocaleDateString()}</p>
                 </div>
+
             </div>
         `;
 
