@@ -10,7 +10,7 @@ document.getElementById("btn").addEventListener("click", function () {
 
 
         alert("Login Successful")
-        window.location.href = "/home.html"
+        window.location.href = "home.html"
 
     }
     else if(inputValue==="" && passwordValue===""){
